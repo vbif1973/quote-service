@@ -5,10 +5,10 @@ import com.epam.quoteservice.dto.ElvlDTO;
 import com.epam.quoteservice.exception.NoDataFoundException;
 import com.epam.quoteservice.repository.ElvlRepository;
 import com.epam.quoteservice.service.ElvlService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;

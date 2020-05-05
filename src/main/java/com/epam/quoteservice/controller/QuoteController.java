@@ -3,6 +3,8 @@ package com.epam.quoteservice.controller;
 import com.epam.quoteservice.dto.QuoteDTO;
 import com.epam.quoteservice.model.Quote;
 import com.epam.quoteservice.service.QuoteService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,8 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 
 @RestController
 @RequestMapping("/quotes")

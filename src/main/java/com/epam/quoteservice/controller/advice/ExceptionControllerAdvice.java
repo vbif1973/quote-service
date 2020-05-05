@@ -2,11 +2,11 @@ package com.epam.quoteservice.controller.advice;
 
 import com.epam.quoteservice.exception.NoDataFoundException;
 import com.epam.quoteservice.exception.QuoteValidationException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;

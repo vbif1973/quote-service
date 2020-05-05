@@ -7,5 +7,5 @@ public interface QuoteService {
 
     void createQuoteDirect(Quote quote);
 
-    void createQuote(Quote quote);
+    String createQuote(Quote quote);
 }

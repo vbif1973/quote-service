@@ -1,9 +1,7 @@
 package com.epam.quoteservice;
 
 import com.epam.quoteservice.bootstrap.QuoteServletContextListener;
-import com.epam.quoteservice.dto.QuoteDTO;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletListenerRegistrationBean;

@@ -1,6 +1,5 @@
 package com.epam.quoteservice.cache;
 
-import com.epam.quoteservice.dto.QuoteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

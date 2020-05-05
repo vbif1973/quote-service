@@ -1,22 +1,16 @@
 package com.epam.quoteservice.service.impl;
 
 import com.epam.quoteservice.cache.Cache;
-import com.epam.quoteservice.dto.QuoteDTO;
 import com.epam.quoteservice.exception.QuoteValidationException;
 import com.epam.quoteservice.model.Quote;
 import com.epam.quoteservice.repository.QuoteRepository;
 import com.epam.quoteservice.service.QuoteService;
-import org.modelmapper.ModelMapper;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-import java.util.Set;
 
 @Service
 public class QuoteServiceImpl implements QuoteService {
@@ -36,7 +30,7 @@ public class QuoteServiceImpl implements QuoteService {
         quoteRepository.save(quote);
     }
 
-    public void createQuote(Quote quote) {
+    public String createQuote(Quote quote) {
         validateQuote(quote);
 //        Кладем котировку в кэш котировок
         cache.getQuoteCache().add(quote);
@@ -46,10 +40,10 @@ public class QuoteServiceImpl implements QuoteService {
         cache.getElvlCache().put(quote.getIsin(), calculatedElvl);
         logger.info(String.format("Added elvl = %.2f to cache for isin %s", calculatedElvl, quote.getIsin()));
         saveQuotesAndPurgeQuoteCache();
-
+        return "Quote saved successfully";
     }
 
-    private void validateQuote(Quote quote) {
+    void validateQuote(Quote quote) {
         if(quote.getIsin().length() != 12) {
             throw new QuoteValidationException(String.format("Isin %s must be 12 characters", quote.getIsin()));
         }
@@ -69,7 +63,7 @@ public class QuoteServiceImpl implements QuoteService {
             }
         }
 
-    private Float calculateElvl(Quote quote) {
+    Float calculateElvl(Quote quote) {
         Float currentElvl = cache.getElvlCache().get(quote.getIsin());
         Float calculatedElvl = null;
         if (currentElvl == null) {
